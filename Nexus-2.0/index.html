@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusUI Official</title>
+    <link rel="icon" type="png" href="nexus ui yt pic.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Dark Theme Colors (Default) */
+            --bg-color: #0a0a0f;
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(15, 15, 25, 0.65);
+            
+            /* Shared Colors */
+            --primary-glow: #00d2ff;
+            --secondary-glow: #9d4edd;
+            --yt-red: #ff0000;
+        }
+
+        /* Light Theme Colors */
+        body.light-mode {
+            --bg-color: #f4f5f7;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --glass-bg: rgba(0, 0, 0, 0.05);
+            --glass-border: rgba(0, 0, 0, 0.15);
+            --nav-bg: rgba(255, 255, 255, 0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.08), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.08), transparent 30%);
+        }
+
+        /* Floating Modern Glass Navbar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            padding: 12px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-glow);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-btn:hover {
+            color: var(--primary-glow);
+            transform: rotate(30deg);
+        }
+
+        /* Mobile Circular Menu Button */
+        .menu-toggle {
+            display: none;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Common Section Layout */
+        section {
+            padding: 120px 8% 80px 8%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Home Section */
+        #home {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding-top: 150px;
+        }
+
+        .home-content h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .home-content span {
+            color: var(--primary-glow);
+        }
+
+        .home-content p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .home-img img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.25);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-main);
+        }
+
+        /* Cards & Setup Items */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .glass-card, .setup-item, .video-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .glass-card:hover, .video-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-glow);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .glass-card i {
+            font-size: 32px;
+            color: var(--primary-glow);
+            margin-bottom: 15px;
+        }
+
+        .glass-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Videos Section Updated Styling */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-thumb {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .video-card:hover .video-thumb img {
+            transform: scale(1.08);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .play-overlay i {
+            font-size: 50px;
+            color: var(--yt-red);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card:hover .play-overlay i {
+            transform: scale(1.2);
+            color: #ff3333;
+        }
+
+        .video-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .video-info h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .video-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .yt-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .yt-visit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .yt-visit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Tech Setup Section */
+        .setup-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .setup-item {
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Contact & Form */
+        .contact-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        /* Clean Modern Button Group */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit {
+            flex: 2;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            color: #fff;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-reset {
+            flex: 1;
+            background: var(--glass-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border-color: var(--text-muted);
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-top: 40px;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--text-main);
+            font-size: 20px;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-glow);
+            color: #fff;
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            nav {
+                width: 95%;
+                padding: 10px 25px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--nav-bg);
+                backdrop-filter: blur(20px);
+                width: 250px;
+                padding: 30px;
+                border-radius: 20px;
+                border: 1px solid var(--glass-border);
+                transition: 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            }
+            .nav-links.active {
+                right: 20px;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            #home, .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .home-content h1 { font-size: 36px; }
+            .home-img img, .about-img img { max-width: 260px; }
+            .contact-form { padding: 25px; }
+            section { padding: 100px 5% 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">NEXUS UI</a>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home" onclick="closeMenu()">Home</a>
+            <a href="#about" onclick="closeMenu()">About</a>
+            <a href="#content" onclick="closeMenu()">Content</a>
+            <a href="#videos" onclick="closeMenu()">Videos</a>
+            <a href="#setup" onclick="closeMenu()">Setup</a>
+            <a href="#contact" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+            <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="menu-toggle" id="menuBtn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="home-content">
+            <h1>Hi, I am <br><span>Rohan</span></h1>
+            <p>Tech Content Creator at NexusUI | Desktop Customization Enthusiast</p>
+        </div>
+        <div class="home-img">
+            <img src="home-img-logo.png" alt="NexusUI Logo">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="about-img.png" alt="Rohan">
+            </div>
+            <div class="about-text">
+                <p><strong>Passion:</strong> I love exploring new tech innovations, experimenting with desktop customization, and sharing creative digital setups with my community.</p>
+                <p><strong>Education:</strong> Govt Tolaram College And University | Narayanganj</p>
+                <p><strong>Experience:</strong> Through dedication and constant learning, I have acquired valuable expertise in digital content creation and desktop transformation. I also bring hands-on experience from my previous professional role as a DSO at bKash.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <h2 class="section-title">What I Customize</h2>
+        <div class="cards-container">
+            <div class="glass-card"><i class="fa-brands fa-windows"></i><h3>Windhawk</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-shield-halved"></i><h3>SecureUxTheme</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-icons"></i><h3>7TSP / Icon Pack</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-folder-open"></i><h3>StartAllBack / ExplorerPatcher</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-droplet"></i><h3>Rainmeter</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-clapperboard"></i><h3>TranslucentTB</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-layer-group"></i><h3>Seelen UI</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-arrow-pointer"></i><h3>Custom Cursors</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-font"></i><h3>Fonts</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-gears"></i><h3>Registry Tweaks</h3></div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2 class="section-title">Popular Videos</h2>
+        <div class="videos-grid">
+            
+            <a href="https://youtu.be/5PtdGiiHeXA?si=tYvvyLFYg5_Ce9Bjhttps://www.youtube.com/@nexusui.official" target="_blank" class="video-card">
+                <div class="video-thumb">
+                    <img src="Transform Your Windows 11 Desktop with Seelen UI – Easy & Stunning Customization.jpg" alt="Transform Your Windows 11 Desktop with Seelen UI – Easy & Stunning Customization">
+                    <div class="play-overlay">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Transform Your Windows 11 Desktop with Seelen UI</h3>
+                    <p>Easy & Stunning Customization | ®™ |</p>
+                </div>
+            </a>
+
+            <a href="https://youtu.be/qXSeRj9b77M?si=9O0EBQN67Z0ErWRu" target="_blank" class="video-card">
+                <div class="video-thumb">
+                    <img src="Transform Windows 11 with Elite Glass Start Menu – Windhawk Customization Tutorial (2025).jpg" alt="Transform Windows 11 with Elite Glass Start Menu – Windhawk Customization Tutorial (2025)">
+                    <div class="play-overlay">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Transform Windows 11 with Elite Glass Start Menu</h3>
+                    <p>Windhawk Customization Tutorial (2025) || ® ||</p>
+                </div>
+            </a>
+
+            <a href="https://youtu.be/h8uVdRUj7f0?si=LiV1ECF9aNpJAF19" target="_blank" class="video-card">
+                <div class="video-thumb">
+                    <img src="Windows XP 2025 Edition image.png" alt="Windows XP 2025 Edition image">
+                    <div class="play-overlay">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Windows XP 2025 Edition</h3>
+                    <p>Modern Taskbar, Start Menu & UI for Windows 11! || @nexusui.official ||</p>
+                </div>
+            </a>
+
+        </div>
+        <div class="yt-btn-container">
+            <a href="https://www.youtube.com/@nexusui.official" target="_blank" class="yt-visit-btn">
+                <i class="fa-brands fa-youtube"></i> Visit YouTube Channel
+            </a>
+        </div>
+    </section>
+
+    <section id="setup">
+        <h2 class="section-title">My Creator Stack</h2>
+        <div class="setup-container">
+            <div class="setup-item"><i class="fa-solid fa-video" style="color:#00d2ff;"></i> OBS Studio</div>
+            <div class="setup-item"><i class="fa-solid fa-film" style="color:#9d4edd;"></i> Microsoft Clipchamp</div>
+            <div class="setup-item"><i class="fa-solid fa-palette" style="color:#00d2ff;"></i> Canva Pro</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-wrapper">
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e9842317-3d74-4120-9171-effe1c56ec64">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Feedback or Message" required></textarea>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Send Message</button>
+                    <button type="reset" class="btn-reset">Clear Form</button>
+                </div>
+            </form>
+            
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@nexusui.official" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/nexusuiofficial/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/nexusui.official" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/nexusui.official/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.threads.com/@nexusui.official" target="_blank"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://x.com/nexusuiofficial" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.tiktok.com/@nexusui.official" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://web.telegram.org/k/#@nexusuiofficial" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle Dark/Light Mode
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('#themeBtn i');
+            
+            if(document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Open/Close Mobile Menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuIcon = document.querySelector('#menuBtn i');
+            
+            navLinks.classList.toggle('active');
+            
+            if(navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Close Menu When a Link is Clicked
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuIcon = document.querySelector('#menuBtn i');
+            
+            if(navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
+</html>
