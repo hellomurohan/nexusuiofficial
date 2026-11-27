@@ -262,6 +262,7 @@
             flex-grow: 1;
         }
 
+        /* About Interactive Buttons */
         .about-tabs {
             display: flex;
             gap: 12px;
@@ -293,6 +294,7 @@
             box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
         }
 
+        /* Animated Panels */
         .about-panel-container {
             position: relative;
             min-height: 220px;
@@ -349,6 +351,7 @@
             font-size: 16px;
         }
 
+        /* Social Icons */
         .social-icons-about {
             margin-top: 25px;
             display: flex;
@@ -407,7 +410,7 @@
             transform: scale(1.1);
         }
 
-        /* What I Customize Section (Updated for Clickable Image Cards) */
+        /* What I Customize Section */
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -425,13 +428,6 @@
             overflow: hidden;
             border: 1px solid var(--glass-border);
             transition: transform 0.4s ease;
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
         }
 
         .glass-card::before {
@@ -466,21 +462,14 @@
             opacity: 1;
         }
 
-        .glass-card img {
-            width: 55px;
-            height: 55px;
-            object-fit: contain;
+        .glass-card i {
+            font-size: 32px;
+            color: var(--primary-glow);
             margin-bottom: 15px;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .glass-card:hover img {
-            transform: scale(1.12);
         }
 
         .glass-card h3 {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 600;
         }
 
@@ -919,9 +908,9 @@
             <div class="about-content-box">
                 <!-- Interactive Buttons -->
                 <div class="about-tabs">
-                    <button class="about-tab-btn active" onclick="switchTab(event, 'passion')">Passion & Journey</button>
-                    <button class="about-tab-btn" onclick="switchTab(event, 'education')">Education</button>
-                    <button class="about-tab-btn" onclick="switchTab(event, 'experience')">Experience</button>
+                    <button class="about-tab-btn active" onclick="switchTab('passion')">Passion & Journey</button>
+                    <button class="about-tab-btn" onclick="switchTab('education')">Education</button>
+                    <button class="about-tab-btn" onclick="switchTab('experience')">Experience</button>
                 </div>
 
                 <!-- Animated Content Panels -->
@@ -968,71 +957,20 @@
         </div>
     </section>
 
-    <!-- Content Section (Clickable Cards with Custom Images) -->
+    <!-- Content Section -->
     <section id="content">
         <h2 class="section-title">What I Customize</h2>
         <div class="cards-container">
-            
-            <!-- 1. Windhawk -->
-            <a href="https://windhawk.net/" target="_blank" class="glass-card">
-                <img src="/What I Customize/windhawk logo.png" alt="Windhawk">
-                <h3>Windhawk</h3>
-            </a>
-
-            <!-- 2. SecureUxTheme -->
-            <a href="https://github.com/namazso/SecureUxTheme/releases/tag/v3.0.0" target="_blank" class="glass-card">
-                <img src="/What I Customize/SecureUxTheme.png" alt="SecureUxTheme">
-                <h3>SecureUxTheme</h3>
-            </a>
-
-            <!-- 3. 7TSP Icon Pack -->
-            <a href="https://www.deviantart.com/devillnside/art/7TSP-GUI-2019-Edition-804769422" target="_blank" class="glass-card">
-                <img src="/What I Customize/7TSP Icon Pack.png" alt="7TSP Icon Pack">
-                <h3>7TSP / Icon Pack</h3>
-            </a>
-
-            <!-- 4. StartAllBack -->
-            <a href="https://www.startallback.com/" target="_blank" class="glass-card">
-                <img src="/What I Customize/StartAllBack.png" alt="StartAllBack">
-                <h3>StartAllBack</h3>
-            </a>
-
-            <!-- 5. Rainmeter -->
-            <a href="https://www.rainmeter.net/" target="_blank" class="glass-card">
-                <img src="/What I Customize/Rainmeter.png" alt="Rainmeter">
-                <h3>Rainmeter</h3>
-            </a>
-
-            <!-- 6. TranslucentTB -->
-            <a href="https://apps.microsoft.com/detail/9pf4kz2vn4w9?hl=en-US&gl=BD" target="_blank" class="glass-card">
-                <img src="/What I Customize/TranslucentTB.png" alt="TranslucentTB">
-                <h3>TranslucentTB</h3>
-            </a>
-
-            <!-- 7. Seelen UI -->
-            <a href="https://seelen.io/" target="_blank" class="glass-card">
-                <img src="/What I Customize/Seelen UI.png" alt="Seelen UI">
-                <h3>Seelen UI</h3>
-            </a>
-
-            <!-- 8. Custom Cursors -->
-            <a href="https://custom-cursor.com/" target="_blank" class="glass-card">
-                <img src="/What I Customize/Custom Cursors.png" alt="Custom Cursors">
-                <h3>Custom Cursors</h3>
-            </a>
-
-            <!-- 9. Fonts -->
-            <a href="https://icons8.com/icons/set/font-style" target="_blank" class="glass-card">
-                <img src="/What I Customize/Fonts.png" alt="Fonts">
-                <h3>Fonts</h3>
-            </a>
-
-            <!-- 10. Registry Tweaks -->
-            <a href="https://github.com/topics/registry-tweaks" target="_blank" class="glass-card">
-                <img src="/What I Customize/Registry Tweaks.png" alt="Registry Tweaks">
-                <h3>Registry Tweaks</h3>
-            </a>
-
+            <div class="glass-card"><i class="fa-brands fa-windows"></i><h3>Windhawk</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-shield-halved"></i><h3>SecureUxTheme</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-icons"></i><h3>7TSP / Icon Pack</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-folder-open"></i><h3>StartAllBack / ExplorerPatcher</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-droplet"></i><h3>Rainmeter</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-clapperboard"></i><h3>TranslucentTB</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-layer-group"></i><h3>Seelen UI</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-arrow-pointer"></i><h3>Custom Cursors</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-font"></i><h3>Fonts</h3></div>
+            <div class="glass-card"><i class="fa-solid fa-gears"></i><h3>Registry Tweaks</h3></div>
         </div>
     </section>
 
@@ -1042,7 +980,7 @@
         <div class="videos-grid">
             
             <!-- Video 1 -->
-            <a href="https://youtu.be/MvLInFXg_ws?si=xaIYZ6o0LklTOdny" target="_blank" class="video-card">
+             <a href="https://youtu.be/MvLInFXg_ws?si=xaIYZ6o0LklTOdny" target="_blank" class="video-card">
                     <div class="video-thumb">
                         <img src="ChatGPT Image Sep 26, 2026, 05_19_36 AM.png" alt="ChatGPT Image Sep 26, 2026, 05_19_36 AM">
                         <div class="play-overlay">
@@ -1054,6 +992,7 @@
                         <p>Full macOS 27-Inspired Customization | ®™ |</p>
                     </div>
             </a>
+
             <!-- Video 2 -->
             <a href="https://youtu.be/5PtdGiiHeXA?si=tYvvyLFYg5_Ce9Bjhttps://www.youtube.com/@nexusui.official" target="_blank" class="video-card">
                 <div class="video-thumb">
@@ -1067,7 +1006,7 @@
                     <p>Easy & Stunning Customization | ®™ |</p>
                 </div>
             </a>
-
+            
             <!-- Video 3 -->
             <a href="https://youtu.be/umIMQiHzJHc?si=NhGQYNWBuY30dCmK" target="_blank" class="video-card">
                 <div class="video-thumb">
@@ -1089,8 +1028,8 @@
             <a href="https://www.youtube.com/@nexusui.official" target="_blank" class="yt-visit-btn">
                 <i class="fa-brands fa-youtube"></i> Visit YouTube Channel
             </a>
-            <a href="https://www.youtube.com/@nexusui.official/playlists" class="pop-video-btn">
-                <i class="fa-solid fa-fire"></i> Most Popular Video
+            <a href="https://www.youtube.com/@nexusui.official/playlists" target="_blank" class="pop-video-btn">
+                <i class="fa-solid fa-fire"></i> Play Lists
             </a>
         </div>
     </section>
@@ -1101,7 +1040,7 @@
         <div class="setup-container">
             <div class="setup-item"><i class="fa-solid fa-video" style="color:#00d2ff;"></i> OBS Studio</div>
             <div class="setup-item"><i class="fa-solid fa-film" style="color:#9d4edd;"></i> Microsoft Clipchamp</div>
-            <!-- <div class="setup-item"><i class="fa-solid fa-palette" style="color:#00d2ff;"></i> Canva Pro</div> -->
+            <div class="setup-item"><i class="fa-solid fa-palette" style="color:#00d2ff;"></i> Canva Pro</div>
             <div class="setup-item"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> ChatGPT Pro</div>
         </div>
     </section>
@@ -1174,7 +1113,8 @@
             }
         }
 
-        function switchTab(event, tabId) {
+        /* About Section Tab Switcher Function with Animation */
+        function switchTab(tabId) {
             const buttons = document.querySelectorAll('.about-tab-btn');
             const panels = document.querySelectorAll('.about-panel');
 
